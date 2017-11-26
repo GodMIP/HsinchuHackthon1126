@@ -1,0 +1,7 @@
+UPDATE daytrip.youbikestop as A 
+right join daytrip.youbikecurrent as B on A.station = B.station
+SET A.id = B.id,A.sarea = B.sarea,A.station=B.station,A.address=B.address,A.total=B.total,A.lng=B.lng,A.lat=B.lat;
+
+SELECT * FROM daytrip.youbikestop as A right join daytrip.youbikecurrent as B on A.station = B.station;
+
+INSERT INTO daytrip.youbikestop(id,sarea,station,address,total,lng,lat) SELECT B.id,B.sarea,B.station,B.address,B.total,B.lng,B.lat FROM daytrip.youbikestop as A right join daytrip.youbikecurrent as B on A.station = B.station WHERE A.id is null;
